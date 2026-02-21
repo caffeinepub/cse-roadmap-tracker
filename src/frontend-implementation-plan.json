@@ -1,0 +1,408 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "CSE Roadmap Tracker Frontend Implementation",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Implement Internet Identity authentication with protected routes and auto-redirect",
+      "acceptanceCriteria": [
+        "Users can authenticate using Internet Identity",
+        "Protected routes redirect to login when user is not authenticated",
+        "Authentication state persists across page refreshes",
+        "Logout functionality clears authentication and redirects to login"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/context/AuthContext.tsx",
+          "operation": "create",
+          "description": "Create authentication context providing Internet Identity authentication state, login, logout functions, and user principal. Use @icp-sdk/react for Internet Identity integration. Include loading state and persistence logic."
+        },
+        {
+          "path": "frontend/src/hooks/useAuth.ts",
+          "operation": "create",
+          "description": "Create custom hook to access AuthContext, throwing error if used outside provider. Return authentication state, user principal, login, logout, and loading status."
+        },
+        {
+          "path": "frontend/src/components/ProtectedRoute.tsx",
+          "operation": "create",
+          "description": "Create protected route wrapper component that checks authentication status using useAuth hook. Redirect unauthenticated users to /login page. Show loading spinner during authentication check."
+        },
+        {
+          "path": "frontend/src/pages/Login.tsx",
+          "operation": "create",
+          "description": "Create login page with Internet Identity authentication button. Redirect authenticated users to /dashboard. Display clean, centered login form with app branding."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wrap application with AuthContext.Provider. Set up React Router with routes for /login (public) and protected routes (/dashboard, /timeline, /planner, /projects, /tests, /progress). Use ProtectedRoute wrapper for authenticated pages."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Create Dashboard with welcome message, overview cards, and progress bar",
+      "acceptanceCriteria": [
+        "Dashboard displays personalized welcome message with user's name",
+        "Four overview cards show real-time task statistics and streak data",
+        "Progress bar visualizes overall completion percentage",
+        "All metrics update dynamically based on task data"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Dashboard.tsx",
+          "operation": "create",
+          "description": "Create Dashboard page component fetching user profile and analytics data from backend. Display welcome message with user name from getProfile(). Render four overview cards (Total Tasks, Completed Tasks, Pending Tasks, Current Streak) using data from backend. Include progress bar showing completion percentage. Handle loading and error states."
+        },
+        {
+          "path": "frontend/src/components/OverviewCard.tsx",
+          "operation": "create",
+          "description": "Create reusable OverviewCard component accepting title, value, icon, and optional trend props. Use shadcn/ui Card component with Tailwind styling for clean, modern appearance."
+        },
+        {
+          "path": "frontend/src/components/ProgressBar.tsx",
+          "operation": "create",
+          "description": "Create ProgressBar component accepting percentage value. Display animated progress bar with percentage label using Tailwind CSS and shadcn/ui Progress component."
+        },
+        {
+          "path": "frontend/src/services/api.ts",
+          "operation": "create",
+          "description": "Create API service module with functions wrapping backend calls: getProfile(), getAllTasks(), getAllProjects(), getAllMockTests(), getTimeline(), createTask(), updateTask(), deleteTask(), markTaskComplete(), addProject(), addMockTest(), addTimelineDay(). Handle errors and return typed responses matching backend interface."
+        },
+        {
+          "path": "frontend/src/hooks/useAnalytics.ts",
+          "operation": "create",
+          "description": "Create useAnalytics hook fetching and computing dashboard metrics from backend data. Calculate total tasks, completed tasks, pending tasks, completion percentage, and current streak. Return loading state and error handling."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Add Recharts analytics with Weekly Progress and Completion Pie charts",
+      "acceptanceCriteria": [
+        "Weekly Progress Chart displays task completion data for the last 7 days",
+        "Pie Chart shows proportion of completed vs pending tasks",
+        "Charts are interactive and responsive",
+        "Data updates automatically when tasks are modified"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/WeeklyProgressChart.tsx",
+          "operation": "create",
+          "description": "Create WeeklyProgressChart component using Recharts LineChart to display task completion over last 7 days. Accept data prop with daily completion counts. Configure responsive container, axes, tooltip, and grid. Use professional color scheme matching app theme."
+        },
+        {
+          "path": "frontend/src/components/CompletionPieChart.tsx",
+          "operation": "create",
+          "description": "Create CompletionPieChart component using Recharts PieChart showing completed vs pending tasks. Accept completedCount and pendingCount props. Configure labels, legend, and custom colors. Make chart responsive and interactive."
+        },
+        {
+          "path": "frontend/src/pages/Dashboard.tsx",
+          "operation": "modify",
+          "description": "Add WeeklyProgressChart and CompletionPieChart components to Dashboard below overview cards. Fetch and transform task data into chart-compatible format. Display charts in responsive grid layout."
+        },
+        {
+          "path": "frontend/src/hooks/useAnalytics.ts",
+          "operation": "modify",
+          "description": "Extend useAnalytics hook to compute weekly progress data (last 7 days with completion counts per day) and chart-ready data structures. Calculate completion percentages and format dates."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Build Timeline view with collapsible month/week/day structure and completion tracking",
+      "acceptanceCriteria": [
+        "Timeline displays hierarchical month/week/day structure with accordion navigation",
+        "Users can expand/collapse each level independently",
+        "Daily topics can be marked as complete with persistent state",
+        "Visual indicators show completion status at each level"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Timeline.tsx",
+          "operation": "create",
+          "description": "Create Timeline page fetching timeline data from getTimeline() backend method. Organize TimelineDay entries into hierarchical month/week/day structure. Render collapsible accordion using shadcn/ui Accordion component. Display completion status indicators and allow marking days as complete. Handle loading and error states."
+        },
+        {
+          "path": "frontend/src/components/TimelineAccordion.tsx",
+          "operation": "create",
+          "description": "Create TimelineAccordion component rendering nested accordion structure for months, weeks, and days. Accept timeline data grouped by date hierarchy. Show completion badges and progress indicators. Use shadcn/ui Accordion with custom styling."
+        },
+        {
+          "path": "frontend/src/components/TimelineDay.tsx",
+          "operation": "create",
+          "description": "Create TimelineDay component displaying single day with topics list and completion checkbox. Accept day data and onToggleComplete callback. Show date, topics as badges, and completion status. Allow toggling completion state."
+        },
+        {
+          "path": "frontend/src/hooks/useTimeline.ts",
+          "operation": "create",
+          "description": "Create useTimeline hook fetching timeline data and providing functions to group entries by month/week/day, toggle day completion, and add new timeline days. Handle backend calls to getTimeline() and addTimelineDay()."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Implement Daily Planner with full CRUD operations for tasks",
+      "acceptanceCriteria": [
+        "Users can create new tasks with title, description, due date, and priority",
+        "Tasks can be edited and deleted",
+        "Tasks can be toggled between complete and incomplete states",
+        "Tasks are filtered and sorted by date and priority",
+        "All changes persist to backend"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/DailyPlanner.tsx",
+          "operation": "create",
+          "description": "Create DailyPlanner page displaying task list with filters for date and priority. Fetch tasks using getAllTasks(). Include add task button opening task form modal. Render task cards with edit, delete, and complete actions. Handle loading and error states."
+        },
+        {
+          "path": "frontend/src/components/TaskCard.tsx",
+          "operation": "create",
+          "description": "Create TaskCard component displaying individual task with title, description, due date, priority badge, and completion checkbox. Include edit and delete action buttons. Use shadcn/ui Card with priority color coding (High: red, Medium: yellow, Low: green)."
+        },
+        {
+          "path": "frontend/src/components/TaskForm.tsx",
+          "operation": "create",
+          "description": "Create TaskForm component with fields for title, description, due date picker, and priority select. Handle both create and edit modes. Use shadcn/ui Form components with validation. Submit to createTask() or updateTask() backend methods."
+        },
+        {
+          "path": "frontend/src/hooks/useTasks.ts",
+          "operation": "create",
+          "description": "Create useTasks hook managing task state with functions for fetching, creating, updating, deleting, and marking tasks complete. Call backend methods from api.ts. Implement optimistic updates and error handling. Return sorted and filtered task list."
+        },
+        {
+          "path": "frontend/src/components/TaskFilters.tsx",
+          "operation": "create",
+          "description": "Create TaskFilters component with date range picker and priority multi-select. Use shadcn/ui Select and DatePicker components. Emit filter changes to parent component."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Create Project Tracker with CRUD operations and status management",
+      "acceptanceCriteria": [
+        "Users can create projects with name, description, status, GitHub link, and tech stack",
+        "Projects can be edited and deleted",
+        "Status can be updated between Planning, In Progress, and Completed",
+        "GitHub links are clickable and open in new tabs",
+        "Tech stack is displayed as tags or badges"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/ProjectTracker.tsx",
+          "operation": "create",
+          "description": "Create ProjectTracker page displaying project cards in grid layout. Fetch projects using getAllProjects(). Include add project button opening project form modal. Show projects grouped by status (Planning, In Progress, Completed). Handle loading and error states."
+        },
+        {
+          "path": "frontend/src/components/ProjectCard.tsx",
+          "operation": "create",
+          "description": "Create ProjectCard component displaying project name, status badge, GitHub link (opens in new tab), and tech stack as badges. Include edit and delete action buttons. Use shadcn/ui Card with status color coding."
+        },
+        {
+          "path": "frontend/src/components/ProjectForm.tsx",
+          "operation": "create",
+          "description": "Create ProjectForm component with fields for project name, GitHub link, status select, and tech stack input (comma-separated or tag input). Handle create and edit modes. Use shadcn/ui Form components. Submit to addProject() backend method."
+        },
+        {
+          "path": "frontend/src/hooks/useProjects.ts",
+          "operation": "create",
+          "description": "Create useProjects hook fetching projects from getAllProjects() and providing functions to add, update status, and delete projects. Handle backend calls and state management. Return projects grouped by status."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Build Mock Test Tracker with CRUD operations and improvement graph",
+      "acceptanceCriteria": [
+        "Users can add mock tests with test name, score, and date",
+        "Tests can be edited and deleted",
+        "Improvement graph displays score progression over time using Recharts",
+        "Graph shows clear trend line and data points for each test"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/MockTestTracker.tsx",
+          "operation": "create",
+          "description": "Create MockTestTracker page displaying test list and improvement graph. Fetch tests using getAllMockTests(). Include add test button opening test form modal. Show tests sorted by date with scores. Display Recharts line chart showing score progression. Handle loading and error states."
+        },
+        {
+          "path": "frontend/src/components/TestCard.tsx",
+          "operation": "create",
+          "description": "Create TestCard component displaying test name, score, date, and edit/delete actions. Use shadcn/ui Card with score highlighting based on performance thresholds."
+        },
+        {
+          "path": "frontend/src/components/TestForm.tsx",
+          "operation": "create",
+          "description": "Create TestForm component with fields for test name, score (numeric input), and date picker. Handle create and edit modes. Use shadcn/ui Form components with validation. Submit to addMockTest() backend method."
+        },
+        {
+          "path": "frontend/src/components/ImprovementGraph.tsx",
+          "operation": "create",
+          "description": "Create ImprovementGraph component using Recharts LineChart to display test scores over time. Accept test data sorted by date. Show trend line with data points. Configure responsive container, axes, tooltip, and grid. Use professional styling."
+        },
+        {
+          "path": "frontend/src/hooks/useMockTests.ts",
+          "operation": "create",
+          "description": "Create useMockTests hook fetching tests from getAllMockTests() and providing functions to add, update, and delete tests. Sort tests by date. Calculate improvement metrics. Handle backend calls and state management."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Create Progress Tracking page with completion metrics and weekly trends",
+      "acceptanceCriteria": [
+        "Page shows overall completion percentage prominently",
+        "Multiple charts visualize progress across different dimensions",
+        "Weekly performance trend chart shows task completion patterns",
+        "All metrics are calculated from actual user data"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/ProgressTracking.tsx",
+          "operation": "create",
+          "description": "Create ProgressTracking page displaying overall completion percentage prominently at top. Fetch all data (tasks, projects, tests) from backend. Show multiple charts: weekly task completion trend, project status distribution, test score progression, and timeline completion. Use Recharts for all visualizations. Handle loading and error states."
+        },
+        {
+          "path": "frontend/src/components/WeeklyPerformanceTrend.tsx",
+          "operation": "create",
+          "description": "Create WeeklyPerformanceTrend component using Recharts BarChart showing task completion count per day for last 7 days. Accept daily completion data. Configure responsive container with professional styling."
+        },
+        {
+          "path": "frontend/src/components/ProjectStatusChart.tsx",
+          "operation": "create",
+          "description": "Create ProjectStatusChart component using Recharts PieChart showing distribution of projects by status (Planning, In Progress, Completed). Accept project status counts. Use distinct colors for each status."
+        },
+        {
+          "path": "frontend/src/hooks/useProgressMetrics.ts",
+          "operation": "create",
+          "description": "Create useProgressMetrics hook computing comprehensive progress metrics from tasks, projects, and tests. Calculate overall completion percentage, weekly trends, project distributions, and test averages. Aggregate data from multiple backend sources."
+        }
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "summary": "Structure frontend with proper folder organization and clean components",
+      "acceptanceCriteria": [
+        "Frontend follows organized directory structure",
+        "Components are modular and reusable",
+        "Services abstract API calls",
+        "Hooks encapsulate shared logic",
+        "Clear separation of concerns throughout codebase"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/layouts/MainLayout.tsx",
+          "operation": "create",
+          "description": "Create MainLayout component providing app shell with navigation sidebar, header with user info and logout button, and content area. Use shadcn/ui components for consistent styling. Make responsive with mobile hamburger menu."
+        },
+        {
+          "path": "frontend/src/components/Sidebar.tsx",
+          "operation": "create",
+          "description": "Create Sidebar component with navigation links to Dashboard, Timeline, Daily Planner, Projects, Tests, and Progress pages. Highlight active route. Include app logo and user profile section. Make collapsible on mobile."
+        },
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "create",
+          "description": "Create Header component displaying page title, user avatar, and logout button. Include mobile menu toggle button. Use shadcn/ui Avatar and Button components."
+        },
+        {
+          "path": "frontend/src/types/index.ts",
+          "operation": "create",
+          "description": "Create shared TypeScript types extending backend interface types with frontend-specific properties (e.g., loading states, UI flags). Export Task, Project, MockTest, UserProfile, TimelineDay, and analytics types."
+        },
+        {
+          "path": "frontend/src/utils/dateUtils.ts",
+          "operation": "create",
+          "description": "Create date utility functions for formatting backend Time (bigint nanoseconds) to readable dates, grouping by week/month, calculating date ranges, and parsing user input dates."
+        },
+        {
+          "path": "frontend/src/utils/formatters.ts",
+          "operation": "create",
+          "description": "Create formatting utility functions for numbers, percentages, priority labels, status labels, and other display values used across components."
+        }
+      ]
+    },
+    {
+      "id": "REQ-15",
+      "summary": "Implement error handling with loading states and toast notifications",
+      "acceptanceCriteria": [
+        "All API calls show loading states during requests",
+        "Error messages display clearly when operations fail",
+        "Success/error toast notifications appear for user actions",
+        "Loading spinners or skeletons shown during data fetching"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/LoadingSpinner.tsx",
+          "operation": "create",
+          "description": "Create LoadingSpinner component with animated spinner icon. Accept optional size and message props. Use Tailwind CSS for styling."
+        },
+        {
+          "path": "frontend/src/components/ErrorBoundary.tsx",
+          "operation": "create",
+          "description": "Create ErrorBoundary component catching React errors and displaying fallback UI. Include retry button and error message display. Log errors to console."
+        },
+        {
+          "path": "frontend/src/hooks/useToast.ts",
+          "operation": "create",
+          "description": "Create useToast hook wrapping shadcn/ui toast functionality. Provide methods to show success, error, info, and warning toasts with consistent styling and duration."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wrap application routes with ErrorBoundary component. Import and configure shadcn/ui Toaster component at root level for global toast notifications."
+        },
+        {
+          "path": "frontend/src/services/api.ts",
+          "operation": "modify",
+          "description": "Enhance API service with comprehensive error handling. Wrap backend calls in try-catch blocks. Throw typed errors with user-friendly messages. Add request/response logging for debugging."
+        },
+        {
+          "path": "frontend/src/components/SkeletonCard.tsx",
+          "operation": "create",
+          "description": "Create SkeletonCard component showing placeholder loading state for cards. Use shadcn/ui Skeleton component with pulse animation. Accept variant prop for different card types."
+        }
+      ]
+    },
+    {
+      "id": "REQ-16",
+      "summary": "Ensure responsive design with clean, modern UI inspired by Notion/Linear",
+      "acceptanceCriteria": [
+        "Application is fully functional on mobile devices (320px+)",
+        "Desktop layout optimizes screen space (1024px+)",
+        "UI follows clean, minimal aesthetic with professional typography",
+        "Navigation adapts to screen size (hamburger menu on mobile)",
+        "All interactive elements are touch-friendly on mobile"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Update global styles with modern design system variables including color palette (neutral grays, accent colors), typography scale (headings, body), spacing scale, and border radius values. Add smooth transitions and focus states. Import professional font family (Inter or similar)."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend Tailwind configuration with custom design tokens matching Notion/Linear aesthetic: color palette, font families, spacing scale, animation utilities, and responsive breakpoints. Configure shadcn/ui theme integration."
+        },
+        {
+          "path": "frontend/src/layouts/MainLayout.tsx",
+          "operation": "modify",
+          "description": "Make MainLayout fully responsive: sidebar collapsible on mobile with overlay/drawer behavior, header with hamburger menu toggle below lg breakpoint, main content area with proper padding and max-width constraints. Use Tailwind responsive utilities."
+        },
+        {
+          "path": "frontend/src/components/MobileMenu.tsx",
+          "operation": "create",
+          "description": "Create MobileMenu component with slide-in drawer navigation for mobile devices. Include close button, navigation links, and user section. Use shadcn/ui Sheet component with smooth animations."
+        },
+        {
+          "path": "frontend/src/components/PageHeader.tsx",
+          "operation": "create",
+          "description": "Create reusable PageHeader component for page titles, descriptions, and action buttons. Make responsive with stacked layout on mobile. Use consistent spacing and typography."
+        }
+      ]
+    }
+  ]
+}

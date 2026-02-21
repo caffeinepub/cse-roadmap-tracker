@@ -1,0 +1,359 @@
+{
+  "kind": "build_request",
+  "title": "Build CSE Roadmap Tracker with Authentication, Dashboard, Timeline, and Progress Tracking",
+  "projectName": "CSE Roadmap Tracker",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Implement Internet Identity authentication system with login, logout, and protected routes that auto-redirect unauthenticated users",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Authentication System - Login - Register - Logout - JWT token storage - Protected routes - Auto redirect if not authenticated"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Users can authenticate using Internet Identity",
+        "Protected routes redirect to login when user is not authenticated",
+        "Authentication state persists across page refreshes",
+        "Logout functionality clears authentication and redirects to login"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Create Dashboard page with welcome message displaying user name, overview cards showing Total Tasks, Completed Tasks, Pending Tasks, and Current Streak, plus a progress bar",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Dashboard - Welcome message with user name - Overview cards: Total Tasks, Completed Tasks, Pending Tasks, Current Streak - Progress bar"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Dashboard displays personalized welcome message with user's name",
+        "Four overview cards show real-time task statistics and streak data",
+        "Progress bar visualizes overall completion percentage",
+        "All metrics update dynamically based on task data"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Add Recharts analytics to Dashboard with Weekly Progress Chart showing task completion over time and Completion Pie Chart displaying completed vs pending tasks",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Charts using Recharts: - Weekly Progress Chart - Completion Pie Chart"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Weekly Progress Chart displays task completion data for the last 7 days",
+        "Pie Chart shows proportion of completed vs pending tasks",
+        "Charts are interactive and responsive",
+        "Data updates automatically when tasks are modified"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Build Timeline view with collapsible accordion structure organized by Month → Week → Day, allowing users to track daily progress and mark topics as complete",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Timeline (Month → Week → Day view) - Collapsible accordion structure - Track daily progress - Mark topics complete"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Timeline displays hierarchical month/week/day structure with accordion navigation",
+        "Users can expand/collapse each level independently",
+        "Daily topics can be marked as complete with persistent state",
+        "Visual indicators show completion status at each level"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Implement Daily Planner with full CRUD operations: add, edit, delete tasks, mark as complete, set due dates, and assign priority levels (High, Medium, Low)",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Daily Planner - Add Task - Edit Task - Delete Task - Mark Complete - Due Date - Priority (High, Medium, Low)"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Users can create new tasks with title, description, due date, and priority",
+        "Tasks can be edited and deleted",
+        "Tasks can be toggled between complete and incomplete states",
+        "Tasks are filtered and sorted by date and priority",
+        "All changes persist to backend"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Create Project Tracker with ability to add projects, update status (Planning, In Progress, Completed), include GitHub links, and list tech stack for each project",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Project Tracker - Add project - Status (Planning, In Progress, Completed) - GitHub link - Tech stack"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Users can create projects with name, description, status, GitHub link, and tech stack",
+        "Projects can be edited and deleted",
+        "Status can be updated between Planning, In Progress, and Completed",
+        "GitHub links are clickable and open in new tabs",
+        "Tech stack is displayed as tags or badges"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Build Mock Test Tracker to add tests with name, score, and date, plus display improvement graph showing score trends over time",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Mock Test Tracker - Add test name - Score - Date - Improvement graph"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Users can add mock tests with test name, score, and date",
+        "Tests can be edited and deleted",
+        "Improvement graph displays score progression over time using Recharts",
+        "Graph shows clear trend line and data points for each test"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Create Progress Tracking page displaying overall completion percentage, comprehensive graphs, and weekly performance trend analytics",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Progress Tracking Page - Overall % completion - Graphs - Weekly performance trend"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Page shows overall completion percentage prominently",
+        "Multiple charts visualize progress across different dimensions",
+        "Weekly performance trend chart shows task completion patterns",
+        "All metrics are calculated from actual user data"
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Implement backend User Profile module with get profile and update profile endpoints",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "User Module - Get profile - Update profile"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Get profile endpoint returns authenticated user's profile data",
+        "Update profile endpoint allows modification of user information",
+        "Profile data includes name, email, and preferences",
+        "Changes persist to stable storage"
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Create backend Task module with endpoints to create, update, delete tasks, mark complete, and get all tasks filtered by authenticated user",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Task Module - Create Task - Update Task - Delete Task - Mark Complete - Get all tasks by user"
+        ]
+      },
+      "acceptanceCriteria": [
+        "CRUD endpoints for tasks are fully functional",
+        "Tasks are scoped to authenticated user (user cannot see others' tasks)",
+        "Mark complete endpoint toggles task completion status",
+        "Get all tasks returns tasks sorted by due date and priority"
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "text": "Implement backend Project module with endpoints to add, update status, delete projects, and get all projects for authenticated user",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Project Module - Add Project - Update Status - Delete Project - Get all projects"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Projects can be created with all required fields",
+        "Status update endpoint accepts Planning, In Progress, and Completed values",
+        "Projects can be deleted",
+        "Get all projects returns user's projects only"
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "text": "Create backend Mock Test module with endpoints to add tests, update scores, get all tests, and provide performance analytics data",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Mock Test Module - Add Test - Update Score - Get all tests - Performance analytics"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Mock tests can be created with name, score, and date",
+        "Scores can be updated after creation",
+        "Get all tests returns tests sorted by date",
+        "Performance analytics endpoint calculates trends and improvement metrics"
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "text": "Implement backend Analytics API with endpoints returning total tasks, completed tasks, weekly progress data, and overall completion percentage",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Analytics API - Total tasks - Completed tasks - Weekly progress - Completion percentage"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Analytics endpoint returns real-time task statistics",
+        "Weekly progress data includes daily breakdown for last 7 days",
+        "Completion percentage calculated from total vs completed tasks",
+        "All metrics are user-specific and authenticated"
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "text": "Structure frontend with proper folder organization: components, pages, context, hooks, services, layouts, and routes directories with clean reusable components",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Proper folder structure: src/ components/ pages/ context/ hooks/ services/ layouts/ routes/ - Clean reusable components"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Frontend follows organized directory structure",
+        "Components are modular and reusable",
+        "Services abstract API calls",
+        "Hooks encapsulate shared logic",
+        "Clear separation of concerns throughout codebase"
+      ]
+    },
+    {
+      "id": "REQ-15",
+      "text": "Implement comprehensive error handling with proper error states, loading states, and toast notifications for user feedback",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Proper error handling - Loading states - Toast notifications"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All API calls show loading states during requests",
+        "Error messages display clearly when operations fail",
+        "Success/error toast notifications appear for user actions",
+        "Loading spinners or skeletons shown during data fetching"
+      ]
+    },
+    {
+      "id": "REQ-16",
+      "text": "Ensure full responsive design for both mobile and desktop viewports with clean, modern, professional UI inspired by Notion and Linear aesthetics",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Clean modern professional UI (like Notion / Linear style)",
+          "Responsive (Mobile + Desktop)"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Application is fully functional on mobile devices (320px+)",
+        "Desktop layout optimizes screen space (1024px+)",
+        "UI follows clean, minimal aesthetic with professional typography",
+        "Navigation adapts to screen size (hamburger menu on mobile)",
+        "All interactive elements are touch-friendly on mobile"
+      ]
+    },
+    {
+      "id": "REQ-17",
+      "text": "Include example dummy data for tasks, projects, mock tests, and timeline entries to demonstrate full functionality",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Include example dummy data"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend includes seed data initialization for new users",
+        "Dummy data covers all major features (tasks, projects, tests, timeline)",
+        "Example data is realistic and representative of actual usage",
+        "Seed data can be easily cleared or regenerated"
+      ]
+    }
+  ],
+  "constraints": [
+    "Use Motoko for backend instead of Spring Boot and MySQL",
+    "Use Internet Identity authentication instead of JWT",
+    "All backend data must persist in Motoko stable storage",
+    "Frontend must use React with TypeScript and Tailwind CSS",
+    "Use Recharts library for all charts and analytics visualizations",
+    "Follow single-actor architecture for Motoko backend"
+  ],
+  "nonGoals": [
+    "Spring Boot or Java backend implementation",
+    "MySQL or any external database integration",
+    "JWT token-based authentication",
+    "Zustand state management (use React Context API)",
+    "Social authentication providers beyond Internet Identity",
+    "Real-time WebSocket features",
+    "Email notifications or SMTP integration",
+    "Third-party analytics services",
+    "Mobile app versions (React Native)"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

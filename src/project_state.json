@@ -1,0 +1,221 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Full-stack CSE Roadmap Tracker application with React frontend (Vite, Tailwind, React Router, Recharts) and Spring Boot backend (JWT auth, MySQL, JPA). Features: authentication, dashboard with analytics, timeline/planner views, project tracker, mock test tracker, and progress tracking.",
+  "architectural_notes": [
+    "Frontend: React + Vite, Tailwind CSS, React Router, Context API/Zustand, Axios, Recharts",
+    "Backend: Spring Boot, Spring Security, JWT auth, MySQL, JPA/Hibernate, Lombok",
+    "Folder structure: components/, pages/, context/, hooks/, services/, layouts/, routes/",
+    "Backend layered architecture: Controller, Service, Repository, DTO, Entity, Config, Security",
+    "JWT token storage on frontend with auto-redirect for unauthenticated users",
+    "Clean, modern professional UI (Notion/Linear style), responsive for mobile + desktop",
+    "Global error handling, validation annotations, DTO mapping, loading states, toast notifications",
+    "Include example dummy data and MySQL schema"
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-implement-internet-identity-authentication-system-with-login-logout-and-protected-routes-that-auto-redirect-unauthenticated-users",
+      "title": "Implement Internet Identity authentication system with login, logout, and protected routes that auto-redirect unauthenticated users",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-dashboard-page-with-welcome-message-displaying-user-name-overview-cards-showing-total-tasks-completed-tasks-pending-tasks-and-current-streak-plus-a-progress-bar",
+      "title": "Create Dashboard page with welcome message displaying user name, overview cards showing Total Tasks, Completed Tasks, Pending Tasks, and Current Streak, plus a progress bar",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-recharts-analytics-to-dashboard-with-weekly-progress-chart-showing-task-completion-over-time-and-completion-pie-chart-displaying-completed-vs-pending-tasks",
+      "title": "Add Recharts analytics to Dashboard with Weekly Progress Chart showing task completion over time and Completion Pie Chart displaying completed vs pending tasks",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-timeline-view-with-collapsible-accordion-structure-organized-by-month-week-day-allowing-users-to-track-daily-progress-and-mark-topics-as-complete",
+      "title": "Build Timeline view with collapsible accordion structure organized by Month → Week → Day, allowing users to track daily progress and mark topics as complete",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-daily-planner-with-full-crud-operations-add-edit-delete-tasks-mark-as-complete-set-due-dates-and-assign-priority-levels-high-medium-low",
+      "title": "Implement Daily Planner with full CRUD operations: add, edit, delete tasks, mark as complete, set due dates, and assign priority levels (High, Medium, Low)",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-project-tracker-with-ability-to-add-projects-update-status-planning-in-progress-completed-include-github-links-and-list-tech-stack-for-each-project",
+      "title": "Create Project Tracker with ability to add projects, update status (Planning, In Progress, Completed), include GitHub links, and list tech stack for each project",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-mock-test-tracker-to-add-tests-with-name-score-and-date-plus-display-improvement-graph-showing-score-trends-over-time",
+      "title": "Build Mock Test Tracker to add tests with name, score, and date, plus display improvement graph showing score trends over time",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-progress-tracking-page-displaying-overall-completion-percentage-comprehensive-graphs-and-weekly-performance-trend-analytics",
+      "title": "Create Progress Tracking page displaying overall completion percentage, comprehensive graphs, and weekly performance trend analytics",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-structure-frontend-with-proper-folder-organization-components-pages-context-hooks-services-layouts-and-routes-directories-with-clean-reusable-components",
+      "title": "Structure frontend with proper folder organization: components, pages, context, hooks, services, layouts, and routes directories with clean reusable components",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-comprehensive-error-handling-with-proper-error-states-loading-states-and-toast-notifications-for-user-feedback",
+      "title": "Implement comprehensive error handling with proper error states, loading states, and toast notifications for user feedback",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-full-responsive-design-for-both-mobile-and-desktop-viewports-with-clean-modern-professional-ui-inspired-by-notion-and-linear-aesthetics",
+      "title": "Ensure full responsive design for both mobile and desktop viewports with clean, modern, professional UI inspired by Notion and Linear aesthetics",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Authentication system with login, register, logout, JWT storage, and protected routes",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Dashboard with overview cards (total/completed/pending tasks, streak), progress bar, and Recharts analytics (weekly progress, completion pie chart)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Timeline view with collapsible month/week/day structure to track daily progress and mark topics complete",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Daily Planner with CRUD operations for tasks, completion marking, due dates, and priority levels",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Project Tracker with add/update/delete, status tracking (Planning/In Progress/Completed), GitHub links, and tech stack",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Mock Test Tracker with test name, score, date tracking, and improvement graphs",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Progress Tracking page with overall completion %, graphs, and weekly performance trends",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Spring Boot backend with JWT authentication, MySQL, JPA/Hibernate, layered architecture (Controller/Service/Repository/DTO/Entity)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Backend User Module with get/update profile APIs",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Backend Task Module with CRUD operations and task completion by user",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-19",
+      "summary": "Implement backend User Profile module with get profile and update profile endpoints",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-20",
+      "summary": "Create backend Task module with endpoints to create, update, delete tasks, mark complete, and get all tasks filtered by authenticated user",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-21",
+      "summary": "Implement backend Project module with endpoints to add, update status, delete projects, and get all projects for authenticated user",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-22",
+      "summary": "Create backend Mock Test module with endpoints to add tests, update scores, get all tests, and provide performance analytics data",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-23",
+      "summary": "Implement backend Analytics API with endpoints returning total tasks, completed tasks, weekly progress data, and overall completion percentage",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-27",
+      "summary": "Include example dummy data for tasks, projects, mock tests, and timeline entries to demonstrate full functionality",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "CSE Roadmap Tracker",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

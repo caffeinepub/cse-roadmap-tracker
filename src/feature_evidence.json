@@ -1,0 +1,238 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-implement-internet-identity-authentication-system-with-login-logout-and-protected-routes-that-auto-redirect-unauthenticated-users",
+      "featureTitle": "Implement Internet Identity authentication system with login, logout, and protected routes that auto-redirect unauthenticated users",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/ProtectedRoute.tsx",
+        "frontend/src/pages/Login.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-dashboard-page-with-welcome-message-displaying-user-name-overview-cards-showing-total-tasks-completed-tasks-pending-tasks-and-current-streak-plus-a-progress-bar",
+      "featureTitle": "Create Dashboard page with welcome message displaying user name, overview cards showing Total Tasks, Completed Tasks, Pending Tasks, and Current Streak, plus a progress bar",
+      "files": [
+        "frontend/src/components/OverviewCard.tsx",
+        "frontend/src/components/ProgressBar.tsx",
+        "frontend/src/hooks/useAnalytics.ts",
+        "frontend/src/pages/Dashboard.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-recharts-analytics-to-dashboard-with-weekly-progress-chart-showing-task-completion-over-time-and-completion-pie-chart-displaying-completed-vs-pending-tasks",
+      "featureTitle": "Add Recharts analytics to Dashboard with Weekly Progress Chart showing task completion over time and Completion Pie Chart displaying completed vs pending tasks",
+      "files": [
+        "frontend/src/components/CompletionPieChart.tsx",
+        "frontend/src/components/WeeklyProgressChart.tsx",
+        "frontend/src/hooks/useAnalytics.ts",
+        "frontend/src/pages/Dashboard.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-timeline-view-with-collapsible-accordion-structure-organized-by-month-week-day-allowing-users-to-track-daily-progress-and-mark-topics-as-complete",
+      "featureTitle": "Build Timeline view with collapsible accordion structure organized by Month → Week → Day, allowing users to track daily progress and mark topics as complete",
+      "files": [
+        "frontend/src/components/TimelineAccordion.tsx",
+        "frontend/src/components/TimelineDay.tsx",
+        "frontend/src/hooks/useTimeline.ts",
+        "frontend/src/pages/Timeline.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-daily-planner-with-full-crud-operations-add-edit-delete-tasks-mark-as-complete-set-due-dates-and-assign-priority-levels-high-medium-low",
+      "featureTitle": "Implement Daily Planner with full CRUD operations: add, edit, delete tasks, mark as complete, set due dates, and assign priority levels (High, Medium, Low)",
+      "files": [
+        "frontend/src/components/TaskCard.tsx",
+        "frontend/src/components/TaskFilters.tsx",
+        "frontend/src/components/TaskForm.tsx",
+        "frontend/src/hooks/useTasks.ts",
+        "frontend/src/pages/DailyPlanner.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-project-tracker-with-ability-to-add-projects-update-status-planning-in-progress-completed-include-github-links-and-list-tech-stack-for-each-project",
+      "featureTitle": "Create Project Tracker with ability to add projects, update status (Planning, In Progress, Completed), include GitHub links, and list tech stack for each project",
+      "files": [
+        "frontend/src/components/ProjectCard.tsx",
+        "frontend/src/components/ProjectForm.tsx",
+        "frontend/src/hooks/useProjects.ts",
+        "frontend/src/pages/ProjectTracker.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-mock-test-tracker-to-add-tests-with-name-score-and-date-plus-display-improvement-graph-showing-score-trends-over-time",
+      "featureTitle": "Build Mock Test Tracker to add tests with name, score, and date, plus display improvement graph showing score trends over time",
+      "files": [
+        "frontend/src/components/ImprovementGraph.tsx",
+        "frontend/src/components/TestCard.tsx",
+        "frontend/src/components/TestForm.tsx",
+        "frontend/src/hooks/useMockTests.ts",
+        "frontend/src/pages/MockTestTracker.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-progress-tracking-page-displaying-overall-completion-percentage-comprehensive-graphs-and-weekly-performance-trend-analytics",
+      "featureTitle": "Create Progress Tracking page displaying overall completion percentage, comprehensive graphs, and weekly performance trend analytics",
+      "files": [
+        "frontend/src/components/ProjectStatusChart.tsx",
+        "frontend/src/components/WeeklyPerformanceTrend.tsx",
+        "frontend/src/hooks/useProgressMetrics.ts",
+        "frontend/src/pages/ProgressTracking.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-structure-frontend-with-proper-folder-organization-components-pages-context-hooks-services-layouts-and-routes-directories-with-clean-reusable-components",
+      "featureTitle": "Structure frontend with proper folder organization: components, pages, context, hooks, services, layouts, and routes directories with clean reusable components",
+      "files": [
+        "frontend/src/components/Header.tsx",
+        "frontend/src/components/Sidebar.tsx",
+        "frontend/src/layouts/MainLayout.tsx",
+        "frontend/src/types/index.ts",
+        "frontend/src/utils/dateUtils.ts",
+        "frontend/src/utils/formatters.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-14"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-comprehensive-error-handling-with-proper-error-states-loading-states-and-toast-notifications-for-user-feedback",
+      "featureTitle": "Implement comprehensive error handling with proper error states, loading states, and toast notifications for user feedback",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/LoadingSpinner.tsx",
+        "frontend/src/components/SkeletonCard.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-15"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-ensure-full-responsive-design-for-both-mobile-and-desktop-viewports-with-clean-modern-professional-ui-inspired-by-notion-and-linear-aesthetics",
+      "featureTitle": "Ensure full responsive design for both mobile and desktop viewports with clean, modern, professional UI inspired by Notion and Linear aesthetics",
+      "files": [
+        "frontend/src/components/MobileMenu.tsx",
+        "frontend/src/index.css",
+        "frontend/src/layouts/MainLayout.tsx",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-16"
+      ],
+      "confidence": "high"
+    }
+  ]
+}
